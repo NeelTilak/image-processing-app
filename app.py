@@ -39,7 +39,7 @@ class ImageProcessingApp:
         target_image = cv2.convertScaleAbs(target_image)
 
         # Load all template images in the specified folder
-        templates_folder = r"C:\Users\admin\Desktop\Sample_model\sample_data\Logos"
+        templates_folder = r"D:\js\te\py\flask_test_\Logos"
         template_files = [f for f in os.listdir(templates_folder) if f.endswith((".jpg", ".jpeg", ".png", ".tiff"))]
 
         # Set the threshold for template matching
@@ -107,7 +107,7 @@ def index():
             _, buffer = cv2.imencode('.jpg', processed_image)
             img_str = b64encode(buffer).decode('utf-8')
             img_data = f'data:image/jpeg;base64,{img_str}'
-            return render_template('result.html', img_data=img_data, output_text=output_text)
+            return render_template('./templates/result.html', img_data=img_data, output_text=output_text)
 
     # If it's a GET request, handle the restart logic
     elif request.method == 'GET':
@@ -115,7 +115,7 @@ def index():
         processing_app.image_path = None
         flash("Restarted. Please select an image.", 'info')
 
-    return render_template('index.html')
+    return render_template('./templates/index.html')
 
 
 if __name__ == '__main__':
