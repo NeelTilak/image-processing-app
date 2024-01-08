@@ -20,7 +20,7 @@ class ImageProcessingApp:
             return None, None
 
         # Load the source image
-        source_path = r"C:\Users\admin\Desktop\Sample_model\sample_data\data\P_80204011000000927.tiff"
+        source_path = r"D:\js\te\py\flask_test_\sample_data"
         source_image = cv2.imread(source_path, cv2.IMREAD_GRAYSCALE)
         if source_image is None:
             flash(f"Unable to read the source image {source_path}", 'error')
@@ -97,7 +97,7 @@ def index():
             flash("No file selected", 'error')
             return redirect(request.url)
 
-        processing_app.image_path = r"C:\Users\admin\Desktop\Sample_model\temp_image\temp_image.jpg"
+        processing_app.image_path = r"D:\js\te\py\flask_test_\temp_image\temp_image.jpg"
         uploaded_image.save(processing_app.image_path)
 
         processed_image, output_text = processing_app.process_image()
